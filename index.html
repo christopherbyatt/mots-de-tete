@@ -8,67 +8,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="libs/animate.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-       
+
     </style>
 </head>
 
 <body>
-    <h1>Mots de tête&#8239;!</h1>
-    <main>
-        <div class="form">
-            <h2>Interfaces</h2>
-            <p id="message">&nbsp;</p>
-            <fieldset id="etape1">
-                <legend>Étape 1</legend>
-                <p id="consigne"> Vous avez 6 essais pour deviner (par déduction) le mot de 5 lettres.</p>
-                <p id="nombreEssai">&nbsp;</p>
-                <p class="boutons">
-                    <button type="button" id="btnReset" disabled>Rejouer</button>
-
-                    <button type="button" id="btnJouer">Piger un mot!</button>
-                </p>
-            </fieldset>
-            <fieldset id="etape2" hidden>
-                <legend>Étape 2</legend>
-                <div class="entrerUnMot">
-                    <label for="champMot">Entrer un mot de <strong>5</strong> lettres</label>
-                    <p>
-                        <input id="champMot" name="champMot" type="text" maxlength="5">
-                        <button type="button" id="btnEvaluer">Évaluer</button>
-                    </p>
-                </div>
-
-            </fieldset>
-        </div>
-        <aside>
-            <h2> Code couleur</h2>
-            <!-- dl>(dt+dd)*3 -->
-            <dl>
-                <dt class="jaune">Jaune</dt>
-                <dd>La lettre existe dans le mot mais elle n'est pas bien placée</dd>
-                <dt class="vert">Vert</dt>
-                <dd>La lettre coincide parfaitement</dd>
-                <dt class="gris">Gris</dt>
-                <dd>La lettre est absente du mot pigé au hasard</dd>
-            </dl>
-        </aside>
-        <section class="mastermind">
-            <h2>Résultats</h2>
-            <!-- ol>(li#mot$>p.mot>span*5)*6 --> 
-            <ol>
-                <li id="mot1"><p class="mot"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></p></li>
-                <li id="mot2"><p class="mot"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></p></li>
-                <li id="mot3"><p class="mot"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></p></li>
-                <li id="mot4"><p class="mot"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></p></li>
-                <li id="mot5"><p class="mot"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></p></li>
-                <li id="mot6"><p class="mot"><span>_</span><span>_</span><span>_</span><span>_</span><span>_</span></p></li>
-            </ol>
+<main>
+    <p class="regles">Règles du jeu</p>
+    <div class="motsDeTete">
+        <h1>Mots de tête&#8239;!</h1>
+        <h2 class="sous-titre">Mini-jeux</h2>
+        <section class="interface">
+            <div class="interface__difficultes">
+                <input type="radio" id="facile" checked name="difficulté" value="facile">
+                <label for="facile" class="interface__label">Facile</label>
+                <input type="radio" id="intermediaire" name="difficulté" value="intermediaire">
+                <label for="intermediaire" class="interface__label">Intermédiaire</label>
+                <input type="radio" id="difficile" name="difficulté" value="difficile">
+                <label for="difficile" class="interface__label">Difficile</label>
+            </div>
+            <div class="interface__options">
+                <button type="button" id="btnReset" disabled>Reset</button>
+                <button type="button" id="btnJouer">Commencer</button>
+                <input type="text" id="mot" name="mot" placeholder="Écrire le mot ici">
+                <button type="button" id="btnEvaluer">Essayer -></button>
+            </div>
         </section>
-    </main>
-    <script src="app.js"></script>
+        <section class="jeu">
+            <div class="jeu__essaisRestants">
+                <h3>Essais restants : <span> </span>
+                </h3>
+            </div>
+            <div class="jeu__essais">
+                <h3>Vos essais</h3>
+                <ol class="jeu__liste">
+                    <li id="mot1"><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span></li>
+                    <li id="mot2"><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span></li>
+                    <li id="mot3"><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span></li>
+                    <li id="mot4"><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span></li>
+                    <li id="mot5"><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span></li>
+                    <li id="mot6"><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span><span class="jeu__case"></span></li>
+                </ol>
+            </div>
+        </section>
+    </div>
+</main>
+<script src="app.js"></script>
 </body>
 
 </html>
