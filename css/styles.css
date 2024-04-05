@@ -115,7 +115,15 @@ h3 {
 .jeu__mot {
   margin: 0;
 }
-.jeu__case {
+
+#mot1, #mot2, #mot3, #mot4, #mot5, #mot6 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 610px;
+  justify-content: center;
+}
+
+.mot span {
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -126,13 +134,6 @@ h3 {
   background-color: #FFEBDC;
   font-size: 24px;
   margin: 0.5rem;
-}
-
-#mot1, #mot2, #mot3, #mot4, #mot5, #mot6 {
-  display: flex;
-  flex-wrap: wrap;
-  width: 610px;
-  justify-content: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

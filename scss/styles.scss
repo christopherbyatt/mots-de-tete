@@ -107,23 +107,24 @@ h3 {
     &__mot {
         margin: 0;
     }
-    &__case {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 1px solid black;
-        text-align: center;
-        line-height: 50px;
-        background-color: #FFEBDC;
-        font-size: 24px;
-        margin: 0.5rem;
-    }
+
 }
 #mot1, #mot2, #mot3, #mot4, #mot5, #mot6 {
     display: flex;
     flex-wrap: wrap;
     width: 610px;
     justify-content: center;
+}
+.mot span {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 50px;
+    background-color: #FFEBDC;
+    font-size: 24px;
+    margin: 0.5rem;
 }
 

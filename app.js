@@ -8,11 +8,11 @@
  * (3) ajouter des animations de transition lorsqu'on Rejoue
  * */
 
-function afficherCacher(strId, blnIsHidden) {
-    document.getElementById(strId).hidden = blnIsHidden;
-}
+// function afficherCacher(strId, blnIsHidden) {
+//     document.getElementById(strId).hidden = blnIsHidden;
+// }
 
-let wordle = {
+let jeuxMots = {
     strMotHasard: null,
     intNombreEssai: 0,
     getMotAleatoire: async function () {
@@ -29,6 +29,7 @@ let wordle = {
         document.getElementById("btnJouer").disabled = true;
 
         await this.getMotAleatoire();
+        // afficherCacher("etape2", false);
     },
     evaluerMot: function (strMotAEvaluer) {
         strMotAEvaluer = strMotAEvaluer.toLowerCase();
@@ -67,18 +68,19 @@ let wordle = {
         }
     },
     reset: function () {
-        let arrSpan = document.querySelectorAll(".jeu__mot span");
+        let arrSpan = document.querySelectorAll(".mot span");
         for (let intCpt = 0; intCpt < arrSpan.length; intCpt++) {
             arrSpan[intCpt].innerText = "";
-            document.getElementById("btnReset").disabled = false;
+            arrSpan[intCpt].className = "";
         }
         this.intNombreEssai = 0;
 
         // Gérer l'état des boutons
-        document.getElementById("btnJouer").className = "animate animate__jello";
         document.getElementById("btnJouer").disabled = false;
         document.getElementById("btnReset").disabled = true;
+        document.getElementById("btnEvaluer").disabled = false;
         document.getElementById("btnReset").className = "";
+        // afficherCacher("etape2", true);
     }
 
 };
@@ -89,14 +91,14 @@ window.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnJouer").className = "animate animate__jello";
 })
 document.getElementById("btnJouer").addEventListener("click", function () {
-    wordle.pigerMot();
+    jeuxMots.pigerMot();
 })
 document.getElementById("btnEvaluer").addEventListener("click", function () {
     let strMot = document.getElementById("mot").value;
-    wordle.evaluerMot(strMot);
+    jeuxMots.evaluerMot(strMot);
 })
 document.getElementById("btnReset").addEventListener("click", function () {
-    wordle.reset();
+    jeuxMots.reset();
 })
 // choix de remplacer <form> par div.form plutôt que:
 /* document.getElementById("champMot").addEventListener("keyup", function(objEvenement){
