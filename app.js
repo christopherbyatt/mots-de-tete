@@ -8,7 +8,7 @@
  * (3) ajouter des animations de transition lorsqu'on Rejoue
  * */
 
-function afficherCacher(strId, blnIsHidden){
+function afficherCacher(strId, blnIsHidden) {
     document.getElementById(strId).hidden = blnIsHidden;
 }
 
@@ -26,40 +26,23 @@ let wordle = {
         }
     },
     pigerMot: async function () {
-        document.getElementById("btnJouer").className = "";
-        document.getElementById("btnJouer").disabled = true; 
-        afficherCacher("etape2", false);
-         
+        document.getElementById("btnJouer").disabled = true;
+
         await this.getMotAleatoire();
-        
-        document.getElementById("consigne").innerText = "Vous avez 6 essais pour deviner le mot de 5 lettres"
-        document.getElementById("consigne").className = "animate animate__pulse";
     },
     evaluerMot: function (strMotAEvaluer) {
         strMotAEvaluer = strMotAEvaluer.toLowerCase();
-        // réinitialiser le message et vider le champ de saisie
-        let strMessage = "&nbsp;";
-        document.getElementById("champMot").value = ""
+        document.getElementById("mot").value = ""
 
-        if (strMotAEvaluer != "" && this.intNombreEssai < 6) {
+        if (strMotAEvaluer !== "" && this.intNombreEssai < 6) {
             this.intNombreEssai += 1;
-            // Mettre à jour le témoin
-            document.getElementById("nombreEssai").innerHTML = "Essai numéro: <strong>" + this
-                .intNombreEssai + "</strong>";
-            // boucler sur le mot à évaluer pour examiner chaque lettre
             for (let intCpt = 0; intCpt < strMotAEvaluer.length; intCpt++) {
-                // Littéraux de gabarit pour un sélecteur complexe
-                // console.log(`#mot${this.intNombreEssai} span:nth-of-type(${intCpt+1})`);
                 let tagSpan = document.querySelector(
-                    `#mot${this.intNombreEssai} span:nth-of-type(${intCpt+1})`);
+                    `#mot${this.intNombreEssai} span:nth-of-type(${intCpt + 1})`);
                 let strLettre = strMotAEvaluer.charAt(intCpt);
                 tagSpan.innerText = strLettre;
-                // pour chaque lettre du mot vérifier si la lettre existe dans le mot
-                // //  si elle est au bon endroit c'est vert
-                // //  sinon c'est jaune
-                // sinon c'est gris
-                if (this.strMotHasard.indexOf(strLettre) != -1) {
-                    if (strMotAEvaluer.charAt(intCpt) == this.strMotHasard.charAt(intCpt)) {
+                if (this.strMotHasard.indexOf(strLettre) !== -1) {
+                    if (strMotAEvaluer.charAt(intCpt) === this.strMotHasard.charAt(intCpt)) {
                         tagSpan.className = "vert";
                     } else {
                         tagSpan.className = "jaune";
@@ -71,43 +54,31 @@ let wordle = {
 
             }
             // donner une rétroaction
-            if (strMotAEvaluer == this.strMotHasard) {
-                strMessage = "Bravo vous avez réussi!"; 
-                console.log()
-            } else {
-                if (this.intNombreEssai == 6) {
-                    strMessage = "SCROGNEUGNEU! iel est désolé(e), le mot était: " + this.strMotHasard;
-                 
-                }
-            }
-            if (strMessage != "&nbsp;") {
-                document.getElementById("btnReset").disabled = false;
-                document.getElementById("btnReset").className = "animate animate__jello";
-            }
-            document.getElementById("message").innerHTML = strMessage;
+            if (strMotAEvaluer === this.strMotHasard) {
 
+                console.log()
+                document.getElementById("btnEvaluer").disabled = true;
+                document.getElementById("btnReset").disabled = false;
+            }
+            if (this.intNombreEssai === 6) {
+                document.getElementById("btnEvaluer").disabled = true;
+                document.getElementById("btnReset").disabled = false;
+            }
         }
     },
     reset: function () {
-        // Vider (ou presque) le paragraphe de message; 
-        // l'espace insécable &nbsp; permet de conserver le display block de l'élément vide
-        document.getElementById("message").innerHTML = "&nbsp;";
-        // Effacer tous les essais du jeu précédent
-        let arrSpan = document.querySelectorAll(".mot span");
+        let arrSpan = document.querySelectorAll(".jeu__mot span");
         for (let intCpt = 0; intCpt < arrSpan.length; intCpt++) {
-            arrSpan[intCpt].innerText = "_";
-            arrSpan[intCpt].className = "";
+            arrSpan[intCpt].innerText = "";
+            document.getElementById("btnReset").disabled = false;
         }
-        document.getElementById("nombreEssai").innerText = ""
-        document.getElementById("consigne").className = "";
-        this.intNombreEssai = 0; 
+        this.intNombreEssai = 0;
 
         // Gérer l'état des boutons
         document.getElementById("btnJouer").className = "animate animate__jello";
-        document.getElementById("btnJouer").disabled = false; 
+        document.getElementById("btnJouer").disabled = false;
         document.getElementById("btnReset").disabled = true;
-        document.getElementById("btnReset").className = ""; 
-        afficherCacher("etape2", true);
+        document.getElementById("btnReset").className = "";
     }
 
 };
@@ -121,7 +92,7 @@ document.getElementById("btnJouer").addEventListener("click", function () {
     wordle.pigerMot();
 })
 document.getElementById("btnEvaluer").addEventListener("click", function () {
-    let strMot = document.getElementById("champMot").value;
+    let strMot = document.getElementById("mot").value;
     wordle.evaluerMot(strMot);
 })
 document.getElementById("btnReset").addEventListener("click", function () {
