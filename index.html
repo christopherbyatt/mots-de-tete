@@ -22,17 +22,17 @@
         <h2 class="sous-titre">Mini-jeux</h2>
         <section class="interface">
             <div class="interface__difficultes">
-                <input type="radio" id="facile" checked name="difficulté" value="facile">
+                <input type="radio" id="facile" checked name="difficulte" value="1">
                 <label for="facile" class="interface__label">Facile</label>
-                <input type="radio" id="intermediaire" name="difficulté" value="intermediaire">
+                <input type="radio" id="intermediaire" name="difficulte" value="2">
                 <label for="intermediaire" class="interface__label">Intermédiaire</label>
-                <input type="radio" id="difficile" name="difficulté" value="difficile">
+                <input type="radio" id="difficile" name="difficulte" value="3">
                 <label for="difficile" class="interface__label">Difficile</label>
+                <button type="button" id="btnJouer">Commencer</button>
             </div>
             <div class="interface__options">
                 <button type="button" id="btnReset" disabled>Reset</button>
-                <button type="button" id="btnJouer">Commencer</button>
-                <input type="text" id="mot" name="mot" placeholder="Écrire le mot ici">
+                <input type="text" id="mot" name="mot" maxlength="5" disabled placeholder="Écrire le mot ici">
                 <button type="button" id="btnEvaluer">Essayer -></button>
             </div>
         </section>
