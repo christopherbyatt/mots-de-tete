@@ -16,29 +16,7 @@ let jeuxMots = {
     strMotHasard: null,
     intNombreEssai: 0,
     getMotAleatoire: async function () {
-        const difficulte = document.querySelector('input[name="difficulte"]:checked').value;
-        console.log(document.querySelector('input[name="difficulte"]:checked').value)
-        if (difficulte === "1") {
-            try {
                 const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
-                const data = await response.json();
-                this.strMotHasard = data[0].mot;
-                console.log(this.strMotHasard);
-            } catch (error) {
-                console.error("Erreur lors de la récupération du mot aléatoire :", error);
-            }
-        } else if (difficulte === "2"){
-            try {
-                const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=7&maxlong=7&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
-                const data = await response.json();
-                this.strMotHasard = data[0].mot;
-                console.log(this.strMotHasard);
-            } catch (error) {
-                console.error("Erreur lors de la récupération du mot aléatoire :", error);
-            }
-        } else {
-            try {
-                const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=10&maxlong=10&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
                 const data = await response.json();
                 this.strMotHasard = data[0].mot;
                 console.log(this.strMotHasard);
@@ -67,12 +45,12 @@ let jeuxMots = {
                 tagSpan.innerText = strLettre;
                 if (this.strMotHasard.indexOf(strLettre) !== -1) {
                     if (strMotAEvaluer.charAt(intCpt) === this.strMotHasard.charAt(intCpt)) {
-                        tagSpan.className = "vert";
+                        tagSpan.classList.add("vert");
                     } else {
-                        tagSpan.className = "jaune";
+                        tagSpan.classList.add("jaune");
                     }
                 } else {
-                    tagSpan.className = "gris";
+                    tagSpan.classList.add("gris");
 
                 }
 
