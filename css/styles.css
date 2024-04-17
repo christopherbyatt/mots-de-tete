@@ -13,6 +13,10 @@ body {
   aspect-ratio: 1/1;
 }
 
+p {
+  margin: 0;
+}
+
 h1 {
   font-size: 6rem;
   font-weight: bold;
@@ -36,6 +40,12 @@ h1 {
   width: 640px;
   max-width: 51.2rem;
   gap: 2rem;
+}
+.interface__label {
+  background-color: #406D65;
+  border-radius: 10px;
+  padding: 10px 40px;
+  color: #FFDAC2;
 }
 .interface__mot {
   display: flex;
@@ -116,6 +126,10 @@ h1 {
   padding: 10px;
 }
 
+input[type=radio] {
+  display: none;
+}
+
 h3 {
   margin-bottom: 0;
 }
@@ -143,16 +157,15 @@ h3 {
 
 .mot span {
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
   text-align: center;
-  line-height: 50px;
+  line-height: 80px;
   color: white;
-  background-color: #FFEBDC;
-  font-size: 20px;
-  margin: 0.5rem;
+  background-color: rgba(77, 60, 49, 0.3);
+  font-size: 28px;
+  margin: 0.2rem;
   text-transform: uppercase;
 }
 

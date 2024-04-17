@@ -84,6 +84,22 @@ let jeuxMots = {
     }
 
 };
+let modale = document.getElementById("uneModale");
+let btnDifficulte = document.getElementById("btnDifficulte");
+let span = document.getElementsByClassName("fermer")[0];
+btnDifficulte.onclick = function() {
+    modale.style.display = "block";
+}
+span.onclick = function() {
+    modale.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target === modale) {
+        modale.style.display = "none";
+    }
+}
+
+
 
 // utiliser DOMContentLoaded plutôt que load
 // https://developer.mozilla.org/fr/docs/Web/API/Window/DOMContentLoaded_event
