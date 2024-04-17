@@ -16,18 +16,17 @@ let jeuxMots = {
     strMotHasard: null,
     intNombreEssai: 0,
     getMotAleatoire: async function () {
-                const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
-                const data = await response.json();
-                this.strMotHasard = data[0].mot;
-                console.log(this.strMotHasard);
-            } catch (error) {
-                console.error("Erreur lors de la récupération du mot aléatoire :", error);
-            }
+        try {
+            const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
+            const data = await response.json();
+            this.strMotHasard = data[0].mot;
+            console.log(this.strMotHasard);
+        } catch (error) {
+            console.error("Erreur lors de la récupération du mot aléatoire :", error);
         }
     },
     pigerMot: async function () {
         document.getElementById("btnJouer").disabled = true;
-        document.getElementById('mot').disabled = false;
 
         await this.getMotAleatoire();
         // afficherCacher("etape2", false);
@@ -45,12 +44,12 @@ let jeuxMots = {
                 tagSpan.innerText = strLettre;
                 if (this.strMotHasard.indexOf(strLettre) !== -1) {
                     if (strMotAEvaluer.charAt(intCpt) === this.strMotHasard.charAt(intCpt)) {
-                        tagSpan.classList.add("vert");
+                        tagSpan.className = "vert";
                     } else {
-                        tagSpan.classList.add("jaune");
+                        tagSpan.className = "jaune";
                     }
                 } else {
-                    tagSpan.classList.add("gris");
+                    tagSpan.className = "gris";
 
                 }
 
@@ -59,12 +58,10 @@ let jeuxMots = {
             if (strMotAEvaluer === this.strMotHasard) {
 
                 console.log()
-                document.getElementById("mot").disabled = true;
                 document.getElementById("btnEvaluer").disabled = true;
                 document.getElementById("btnReset").disabled = false;
             }
             if (this.intNombreEssai === 6) {
-                document.getElementById("mot").disabled = true;
                 document.getElementById("btnEvaluer").disabled = true;
                 document.getElementById("btnReset").disabled = false;
             }
@@ -79,7 +76,6 @@ let jeuxMots = {
         this.intNombreEssai = 0;
 
         // Gérer l'état des boutons
-        document.getElementById("mot").disabled = true;
         document.getElementById("btnJouer").disabled = false;
         document.getElementById("btnReset").disabled = true;
         document.getElementById("btnEvaluer").disabled = false;
