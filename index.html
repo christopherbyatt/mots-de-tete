@@ -19,40 +19,60 @@
     <p class="regles">Règles du jeu</p>
     <div class="motsDeTete">
         <h1>Mots de tête&#8239;!</h1>
-        <h2 class="sous-titre">Mini-jeux</h2>
-        <section class="interface">
-            <div class="interface__difficultes">
-                <input type="radio" id="facile" checked name="difficulté" value="facile">
-                <label for="facile" class="interface__label">Facile</label>
-                <input type="radio" id="intermediaire" name="difficulté" value="intermediaire">
-                <label for="intermediaire" class="interface__label">Intermédiaire</label>
-                <input type="radio" id="difficile" name="difficulté" value="difficile">
-                <label for="difficile" class="interface__label">Difficile</label>
-            </div>
-            <div class="interface__options">
-                <button type="button" id="btnReset" disabled>Reset</button>
-                <button type="button" id="btnJouer">Commencer</button>
-                <input type="text" id="mot" name="mot" placeholder="Écrire le mot ici">
-                <button type="button" id="btnEvaluer">Essayer -></button>
-            </div>
-        </section>
-        <section class="jeu">
-            <div class="jeu__essaisRestants">
+        <h2 class="sous-titre">Mini-jeu</h2>
+        <div class="interface">
+            <div class="interface__essaisRestants">
                 <h3>Essais restants : <span> </span>
                 </h3>
             </div>
+            <div class="interface__mot">
+                <button type="button" id="btnReset">R</button>
+                <input type="text" id="mot" name="mot" maxlength="5" placeholder="Écrire le mot ici">
+                <label for="mot"></label>
+                <button type="button" id="btnEvaluer">Essayer -></button>
+            </div>
+            <div class="interface__options">
+                <button type="button" id="btnRegle">Règles du jeu</button>
+                <button type="button" id="btnDifficulte">Difficultés</button>
+                <button type="button" id="btnJouer">Piger un mots</button>
+            </div>
+<!--            <div class="interface__difficultes">-->
+<!--                <input type="radio" id="facile" checked name="difficulte" value="1">-->
+<!--                <label for="facile" class="interface__label">Facile</label>-->
+<!--                <input type="radio" id="intermediaire" name="difficulte" value="2">-->
+<!--                <label for="intermediaire" class="interface__label">Intermédiaire</label>-->
+<!--                <input type="radio" id="difficile" name="difficulte" value="3">-->
+<!--                <label for="difficile" class="interface__label">Difficile</label>-->
+<!--            </div>-->
+<!--            <div class="interface__piger">-->
+<!--                <button type="button" id="btnJouer">Piger un mots</button>-->
+<!--            </div>-->
+<!--            <div class="interface__options">-->
+<!--                <button type="button" id="btnReset" disabled>Reset</button>-->
+<!--                <input type="text" id="mot" name="mot" maxlength="5" disabled placeholder="Écrire le mot ici">-->
+<!--                <button type="button" id="btnEvaluer">Essayer -></button>-->
+<!--            </div>-->
+        </div>
+        <div class="jeu">
+
             <div class="jeu__essais">
                 <h3>Vos essais</h3>
                 <ol class="jeu__liste">
-                    <li id="mot1"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p></li>
-                    <li id="mot2"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p></li>
-                    <li id="mot3"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p></li>
-                    <li id="mot4"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p></li>
-                    <li id="mot5"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p></li>
-                    <li id="mot6"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p></li>
+                    <li id="mot1"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    </li>
+                    <li id="mot2"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    </li>
+                    <li id="mot3"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    </li>
+                    <li id="mot4"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    </li>
+                    <li id="mot5"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    </li>
+                    <li id="mot6"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    </li>
                 </ol>
             </div>
-        </section>
+        </div>
     </div>
 </main>
 <script src="app.js"></script>
