@@ -88,8 +88,13 @@ let jeuxMots = {
 // utiliser DOMContentLoaded plutôt que load
 // https://developer.mozilla.org/fr/docs/Web/API/Window/DOMContentLoaded_event
 window.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btnJouer").className = "animate animate__jello";
 })
+document.getElementById("menuCommencer").addEventListener("click", function() {
+    // Cache le div "menu"
+    document.querySelector('.menu').style.display = "none";
+    // Affiche le div "jeu"
+    document.querySelector('.motsDeTete').style.display = "flex";
+});
 document.getElementById("btnJouer").addEventListener("click", function () {
     jeuxMots.pigerMot();
 })
