@@ -26,8 +26,6 @@ let jeuxMots = {
         }
     },
     pigerMot: async function () {
-        document.getElementById("btnJouer").disabled = true;
-
         await this.getMotAleatoire();
         // afficherCacher("etape2", false);
     },
@@ -94,10 +92,8 @@ document.getElementById("menuCommencer").addEventListener("click", function() {
     document.querySelector('.menu').style.display = "none";
     // Affiche le div "jeu"
     document.querySelector('.motsDeTete').style.display = "flex";
-});
-document.getElementById("btnJouer").addEventListener("click", function () {
     jeuxMots.pigerMot();
-})
+});
 document.getElementById("btnEvaluer").addEventListener("click", function () {
     let strMot = document.getElementById("mot").value;
     jeuxMots.evaluerMot(strMot);
