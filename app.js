@@ -8,10 +8,25 @@
  * (3) ajouter des animations de transition lorsqu'on Rejoue
  * */
 
-// function afficherCacher(strId, blnIsHidden) {
-//     document.getElementById(strId).hidden = blnIsHidden;
-// }
+// Récupérer le bouton "Règles du jeu"
+let btnRegles = document.getElementById("menuRegle");
+let btnRegles2 = document.getElementById("btnRegle");
 
+// Récupérer la modale
+let modal = document.getElementById("modalRegles");
+
+btnRegles.onclick = function() {
+    modal.style.display = "block";
+}
+btnRegles2.onclick = function() {
+    modal.style.display = "block";
+}
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
 let jeuxMots = {
     strMotHasard: null,
     intNombreEssai: 0,
@@ -27,7 +42,6 @@ let jeuxMots = {
     },
     pigerMot: async function () {
         await this.getMotAleatoire();
-        // afficherCacher("etape2", false);
     },
     evaluerMot: function (strMotAEvaluer) {
         strMotAEvaluer = strMotAEvaluer.toLowerCase();
@@ -75,11 +89,8 @@ let jeuxMots = {
         this.intNombreEssai = 0;
 
         // Gérer l'état des boutons
-        document.getElementById("btnJouer").disabled = false;
         document.getElementById("btnReset").disabled = true;
         document.getElementById("btnEvaluer").disabled = false;
-        document.getElementById("btnReset").className = "";
-        // afficherCacher("etape2", true);
     }
 
 };
