@@ -16,8 +16,25 @@
 
 <body>
 <main>
-    <p class="regles">Règles du jeu</p>
+    <div class="menu">
+        <h1>Mots de tête&#8239;!</h1>
+        <h2 class="sous-titre">Mini-jeu</h2>
+        <img src="images/logo.svg" alt="">
+        <div class="menu__difficulte">
+            <input type="radio" id="facile" checked name="difficulte" value="1">
+            <label for="facile" class="interface__label">Facile</label>
+            <input type="radio" id="intermediaire" name="difficulte" value="2">
+            <label for="intermediaire" class="interface__label">Intermédiaire</label>
+            <input type="radio" id="difficile" name="difficulte" value="3">
+            <label for="difficile" class="interface__label">Difficile</label>
+        </div>
+        <div class="menu__interface">
+            <button type="button" id="menuRegle">Règles du jeu</button>
+            <button type="button" id="menuCommencer">Commencer la partie</button>
+        </div>
+    </div>
     <div class="motsDeTete">
+        <p class="regles">Règles du jeu</p>
         <h1>Mots de tête&#8239;!</h1>
         <h2 class="sous-titre">Mini-jeu</h2>
         <div class="interface">
@@ -36,17 +53,17 @@
                 <button type="button" id="btnDifficulte">Difficultés</button>
                 <button type="button" id="btnJouer">Piger un mots</button>
             </div>
-<!--            <div id="uneModale" class="modale">-->
-<!--                <div class="modale__content">-->
-<!--                    <span class="fermer">X</span>-->
-<!--                    <input type="radio" id="facile" checked name="difficulte" value="1">-->
-<!--                    <label for="facile" class="interface__label">Facile</label>-->
-<!--                    <input type="radio" id="intermediaire" name="difficulte" value="2">-->
-<!--                    <label for="intermediaire" class="interface__label">Intermédiaire</label>-->
-<!--                    <input type="radio" id="difficile" name="difficulte" value="3">-->
-<!--                    <label for="difficile" class="interface__label">Difficile</label>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div id="uneModale" class="modale">-->
+            <!--                <div class="modale__content">-->
+            <!--                    <span class="fermer">X</span>-->
+            <!--                    <input type="radio" id="facile" checked name="difficulte" value="1">-->
+            <!--                    <label for="facile" class="interface__label">Facile</label>-->
+            <!--                    <input type="radio" id="intermediaire" name="difficulte" value="2">-->
+            <!--                    <label for="intermediaire" class="interface__label">Intermédiaire</label>-->
+            <!--                    <input type="radio" id="difficile" name="difficulte" value="3">-->
+            <!--                    <label for="difficile" class="interface__label">Difficile</label>-->
+            <!--                </div>-->
+            <!--            </div>-->
             <!--            <div class="interface__difficultes">-->
             <!--                <input type="radio" id="facile" checked name="difficulte" value="1">-->
             <!--                <label for="facile" class="interface__label">Facile</label>-->

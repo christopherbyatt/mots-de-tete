@@ -44,9 +44,10 @@ let jeuxMots = {
                 tagSpan.innerText = strLettre;
                 if (this.strMotHasard.indexOf(strLettre) !== -1) {
                     if (strMotAEvaluer.charAt(intCpt) === this.strMotHasard.charAt(intCpt)) {
-                        tagSpan.className = "vert";
+                        tagSpan.classList.add("vert", "info")
                     } else {
-                        tagSpan.className = "jaune";
+                        tagSpan.classList.add("jaune", "info")
+
                     }
                 } else {
                     tagSpan.className = "gris";
@@ -84,23 +85,6 @@ let jeuxMots = {
     }
 
 };
-let modale = document.getElementById("uneModale");
-let btnDifficulte = document.getElementById("btnDifficulte");
-let span = document.getElementsByClassName("fermer")[0];
-btnDifficulte.onclick = function() {
-    modale.style.display = "block";
-}
-span.onclick = function() {
-    modale.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target === modale) {
-        modale.style.display = "none";
-    }
-}
-
-
-
 // utiliser DOMContentLoaded plutôt que load
 // https://developer.mozilla.org/fr/docs/Web/API/Window/DOMContentLoaded_event
 window.addEventListener("DOMContentLoaded", function () {

@@ -6,11 +6,40 @@ body {
   background-color: #FFDAC3;
   width: 90rem;
   max-width: 900px;
+  display: none;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 50% 50% 0 0;
+  aspect-ratio: 1/1;
+}
+
+img {
+  width: 116px;
+  height: 152px;
+  margin: 0 auto;
+}
+
+.menu {
+  background-color: #FFDAC3;
+  width: 90rem;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   margin: auto;
   border-radius: 50% 50% 0 0;
   aspect-ratio: 1/1;
+}
+.menu__difficulte {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 5rem;
+}
+.menu__interface {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  gap: 16px;
 }
 
 p {
@@ -111,6 +140,37 @@ h1 {
   height: 57px;
   background-color: #B24509;
   color: white;
+}
+
+#menuRegle {
+  width: 453px;
+  height: 57px;
+  margin: 0 auto;
+  background-color: transparent;
+  color: #9D4B1E;
+  border: 3px solid #9D4B1E;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+#menuRegle:hover {
+  background-color: #9D4B1E;
+  color: #FFDAC3;
+}
+
+#menuCommencer {
+  width: 453px;
+  height: 57px;
+  margin: 0 auto;
+  background-color: #9D4B1E;
+  color: #FFEBDC;
+  border: 3px solid #9D4B1E;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+#menuCommencer:hover {
+  background-color: #6D0000;
 }
 
 #btnJouer:hover {
