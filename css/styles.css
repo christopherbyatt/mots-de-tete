@@ -6,11 +6,44 @@ body {
   background-color: #FFDAC3;
   width: 90rem;
   max-width: 900px;
+  display: none;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 50% 50% 0 0;
+  aspect-ratio: 1/1;
+}
+
+img {
+  width: 116px;
+  height: 152px;
+  margin: 0 auto;
+}
+
+.menu {
+  background-color: #FFDAC3;
+  width: 90rem;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   margin: auto;
   border-radius: 50% 50% 0 0;
   aspect-ratio: 1/1;
+}
+.menu__difficulte {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 5rem;
+}
+.menu__interface {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  gap: 16px;
+}
+
+p {
+  margin: 0;
 }
 
 h1 {
@@ -36,6 +69,12 @@ h1 {
   width: 640px;
   max-width: 51.2rem;
   gap: 2rem;
+}
+.interface__label {
+  background-color: #406D65;
+  border-radius: 10px;
+  padding: 10px 40px;
+  color: #FFDAC2;
 }
 .interface__mot {
   display: flex;
@@ -103,6 +142,37 @@ h1 {
   color: white;
 }
 
+#menuRegle {
+  width: 453px;
+  height: 57px;
+  margin: 0 auto;
+  background-color: transparent;
+  color: #9D4B1E;
+  border: 3px solid #9D4B1E;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+#menuRegle:hover {
+  background-color: #9D4B1E;
+  color: #FFDAC3;
+}
+
+#menuCommencer {
+  width: 453px;
+  height: 57px;
+  margin: 0 auto;
+  background-color: #9D4B1E;
+  color: #FFEBDC;
+  border: 3px solid #9D4B1E;
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+
+#menuCommencer:hover {
+  background-color: #6D0000;
+}
+
 #btnJouer:hover {
   background-color: #6D0000;
   color: white;
@@ -114,6 +184,10 @@ h1 {
   border-radius: 10px;
   border: 1px solid black;
   padding: 10px;
+}
+
+input[type=radio] {
+  display: none;
 }
 
 h3 {
@@ -143,16 +217,15 @@ h3 {
 
 .mot span {
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
   text-align: center;
-  line-height: 50px;
+  line-height: 80px;
   color: white;
-  background-color: #FFEBDC;
-  font-size: 20px;
-  margin: 0.5rem;
+  background-color: rgba(77, 60, 49, 0.3);
+  font-size: 28px;
+  margin: 0.2rem;
   text-transform: uppercase;
 }
 
