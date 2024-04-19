@@ -8,12 +8,14 @@
  * (3) ajouter des animations de transition lorsqu'on Rejoue
  * */
 
-// Récupérer le bouton "Règles du jeu"
+
 let btnRegles = document.getElementById("menuRegle");
 let btnRegles2 = document.getElementById("btnRegle");
+let btnDiff = document.getElementById("btnDifficulte");
 
 // Récupérer la modale
 let modal = document.getElementById("modalRegles");
+let modalDiff = document.getElementById("modalDifficulte");
 
 btnRegles.onclick = function() {
     modal.style.display = "block";
@@ -21,10 +23,16 @@ btnRegles.onclick = function() {
 btnRegles2.onclick = function() {
     modal.style.display = "block";
 }
+btnDiff.onclick = function() {
+    modalDiff.style.display = "block"
+}
 
 window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
+    }
+    if (event.target === modalDiff) {
+        modalDiff.style.display = "none";
     }
 }
 let jeuxMots = {
