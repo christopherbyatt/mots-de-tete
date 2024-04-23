@@ -12,6 +12,7 @@
 let btnRegles = document.getElementById("menuRegle");
 let btnRegles2 = document.getElementById("btnRegle");
 let btnDiff = document.getElementById("btnDifficulte");
+let body = document.querySelector("body");
 
 // Récupérer la modale
 let modal = document.getElementById("modalRegles");
@@ -19,33 +20,61 @@ let modalDiff = document.getElementById("modalDifficulte");
 
 btnRegles.onclick = function() {
     modal.style.display = "block";
+    body.style.overflow = "hidden"
 }
 btnRegles2.onclick = function() {
     modal.style.display = "block";
+    body.style.overflow = "hidden"
 }
 btnDiff.onclick = function() {
     modalDiff.style.display = "block"
+    body.style.overflow = "hidden"
 }
 
 window.onclick = function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
+        body.style.overflow = "visible"
     }
     if (event.target === modalDiff) {
         modalDiff.style.display = "none";
+        body.style.overflow = "visible"
     }
 }
 let jeuxMots = {
     strMotHasard: null,
     intNombreEssai: 0,
     getMotAleatoire: async function () {
-        try {
-            const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
-            const data = await response.json();
-            this.strMotHasard = data[0].mot;
-            console.log(this.strMotHasard);
-        } catch (error) {
-            console.error("Erreur lors de la récupération du mot aléatoire :", error);
+        let difficulte = document.querySelector('input[name="difficulte"]:checked').value;
+
+        if(difficulte === "1") {
+            try {
+                const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
+                const data = await response.json();
+                this.strMotHasard = data[0].mot;
+                console.log(this.strMotHasard);
+            } catch (error) {
+                console.error("Erreur lors de la récupération du mot aléatoire :", error);
+            }
+        } else if(difficulte === "2") {
+
+            try {
+                const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=7&maxlong=7&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
+                const data = await response.json();
+                this.strMotHasard = data[0].mot;
+                console.log(this.strMotHasard);
+            } catch (error) {
+                console.error("Erreur lors de la récupération du mot aléatoire :", error);
+            }
+        } else {
+            try {
+                const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=8&maxlong=8&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
+                const data = await response.json();
+                this.strMotHasard = data[0].mot;
+                console.log(this.strMotHasard);
+            } catch (error) {
+                console.error("Erreur lors de la récupération du mot aléatoire :", error);
+            }
         }
     },
     pigerMot: async function () {
@@ -96,9 +125,7 @@ let jeuxMots = {
         }
         this.intNombreEssai = 0;
 
-        // Gérer l'état des boutons
-        document.getElementById("btnReset").disabled = true;
-        document.getElementById("btnEvaluer").disabled = false;
+        jeuxMots.pigerMot()
     }
 
 };
