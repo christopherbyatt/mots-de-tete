@@ -29,7 +29,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-top: 5rem;
+    padding-top: 1rem;
   }
   &__interface {
     display: flex;
@@ -52,7 +52,7 @@ h1 {
   text-align: center;
 }
 
-.sous-titre {
+h2 {
   font-size: 2.5rem;
   color: #B24509;
   text-align: center;
@@ -200,6 +200,15 @@ input[type=radio]:checked+label {
 h3 {
   margin-bottom: 0;
 }
+.h3Diff {
+  text-align: center;
+  margin-top: 2rem;
+  color: #B24509;
+}
+.h3Mod {
+  text-align: center;
+  color: #B24509;
+}
 
 .jeu {
   &__essais {
@@ -243,10 +252,12 @@ h3 {
 
 .vert {
   background-color: #466E45 !important;
+  color: white;
 }
 
 .jaune {
   background-color: #E07E28 !important;
+  color: white;
 }
 
 .gris {
@@ -261,7 +272,7 @@ h3 {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   background-color: rgba(0,0,0,0.4);
 }
 .modalDifficulte {
@@ -272,7 +283,7 @@ h3 {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   background-color: rgba(0,0,0,0.4);
 }
 
@@ -284,14 +295,33 @@ h3 {
   border: 3px solid #9D4B1E;
   border-radius: 10px;
   width: 80%;
-  max-width: 600px;
 }
-.modal-content-dif {
-  background-color: #FFDAC3;
-  margin: 31% auto;
-  padding: 20px;
-  border: 3px solid #9D4B1E;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
+.regle {
+  display: flex;
+  padding: 0;
+  gap: 1rem;
+  justify-content: center;
+  text-decoration: none;
+  list-style: none;
+  &__numero {
+    border: 3px solid #B24509;
+    background-color: #B24509;
+    color: white;
+    border-radius: 0 0 50% 0;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    width: 20px;
+    justify-content: center;
+  }
+  &__contenu {
+    width: 500px;
+    border-radius: 10px;
+    border: 3px solid #B24509;
+  }
+  &__texte {
+    padding: 10px;
+  }
+}
+i {
+  font-size: 30px;
 }

@@ -4,22 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordle version pour TIMCSF</title>
+    <title>Mots de tête</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-
-    </style>
+    <script defer src="https://kit.fontawesome.com/1e6e5f5cfe.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 <main>
     <div class="menu">
         <h1>Mots de tête&#8239;!</h1>
         <h2 class="sous-titre">Mini-jeu</h2>
         <img src="images/logo.svg" alt="logo Mots de tête">
+        <h3 class="h3Diff">Choix de la difficulté</h3>
         <div class="menu__difficulte">
             <input type="radio" id="facile" checked name="difficulte" value="1">
             <label for="facile" class="interface__label">Facile</label>
@@ -33,9 +31,27 @@
             <button type="button" id="menuCommencer">Commencer la partie</button>
         </div>
     </div>
-    <div id="modalRegles" class="modal">
+    <div role="dialog" aria-modal="true" aria-labelledby="modal__h2" id="modalRegles" class="modal">
         <div class="modal-content">
-
+            <h2 id="modal__h2">Règles du jeu</h2>
+            <ol class="regle">
+                <li class="regle__contenu">
+                    <span class="regle__numero">1</span>
+                    <p class="regle__texte">Vous avez 6 essaies fin de trouver le bon mot</p>
+                </li>
+                <li class="regle__contenu">
+                    <span class="regle__numero">2</span>
+                    <p class="regle__texte">Chaques couleurs de case ont une signification : <br> <span class="vert">Vert</span> : la lettre est au bon endroit <br> <span class="jaune">Jaune</span> : La lettre n'est pas au bon endroit <br> <span class="gris">Gris</span> : la lettre n'est pas dans le mot</p>
+                </li>
+                <li class="regle__contenu">
+                    <span class="regle__numero">3</span>
+                    <p class="regle__texte">Vous pouvez, en tout temps, réinitiliser en cliquant sur le bouton R ou en choisissant une nouvelle difficultée</p>
+                </li>
+                <li class="regle__contenu">
+                    <span class="regle__numero">4</span>
+                    <p class="regle__texte">Les difficultés sont : <br> Facile : 5 lettres <br> Intermédiaire : 7 lettres <br> Difficile : 8 lettres </p>
+                </li>
+            </ol>
         </div>
     </div>
     <div class="motsDeTete">
@@ -47,7 +63,7 @@
                 </h3>
             </div>
             <div class="interface__mot">
-                <button type="button" id="btnReset">R</button>
+                <button type="button" id="btnReset"><i class="fa-solid fa-rotate-right"></i></button>
                 <input type="text" id="mot" name="mot" maxlength="5" placeholder="Écrire le mot ici">
                 <label for="mot"></label>
                 <button type="button" id="btnEvaluer">Essayer -></button>
@@ -57,9 +73,17 @@
                 <button type="button" id="btnDifficulte">Difficultés</button>
             </div>
         </div>
-        <div id="modalDifficulte" class="modalDifficulte">
-            <div class="modal-content-dif">
-
+        <div role="dialog" aria-modal="true" aria-label="Choix de la difficulté" id="modalDifficulte" class="modalDifficulte">
+            <div class="modal-content">
+                <h3 class="h3Mod">Choisir une nouvelle difficulté</h3>
+                <div class="menu__difficulte">
+                    <input type="radio" id="facileMod"  name="difficulteMod" value="1">
+                    <label for="facileMod" class="interface__label">Facile</label>
+                    <input type="radio" id="intermediaireMod" name="difficulteMod" value="2">
+                    <label for="intermediaireMod" class="interface__label">Intermédiaire</label>
+                    <input type="radio" id="difficileMod" name="difficulteMod" value="3">
+                    <label for="difficileMod" class="interface__label">Difficile</label>
+                </div>
             </div>
         </div>
         <div class="jeu">
