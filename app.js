@@ -41,9 +41,13 @@ window.onclick = function (event) {
         body.style.overflow = "visible"
     }
 }
+function retraitAccents(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 let jeuxMots = {
     strMotHasard: null,
     intNombreEssai: 0,
+
     getMotAleatoire: async function () {
         let difficulte = document.querySelector('input[name="difficulte"]:checked').value;
 
@@ -52,7 +56,7 @@ let jeuxMots = {
             try {
                 const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
                 const data = await response.json();
-                this.strMotHasard = data[0].mot;
+                this.strMotHasard = retraitAccents(data[0].mot);
                 console.log(this.strMotHasard);
             } catch (error) {
                 console.error("Erreur lors de la récupération du mot aléatoire :", error);
@@ -63,7 +67,7 @@ let jeuxMots = {
             try {
                 const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=7&maxlong=7&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
                 const data = await response.json();
-                this.strMotHasard = data[0].mot;
+                this.strMotHasard = retraitAccents(data[0].mot);
                 console.log(this.strMotHasard);
             } catch (error) {
                 console.error("Erreur lors de la récupération du mot aléatoire :", error);
@@ -72,7 +76,7 @@ let jeuxMots = {
             try {
                 const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=8&maxlong=8&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
                 const data = await response.json();
-                this.strMotHasard = data[0].mot;
+                this.strMotHasard = retraitAccents(data[0].mot);
                 console.log(this.strMotHasard);
             } catch (error) {
                 console.error("Erreur lors de la récupération du mot aléatoire :", error);
@@ -81,6 +85,7 @@ let jeuxMots = {
     },
     pigerMot: async function () {
         await this.getMotAleatoire();
+        document.getElementById("btnEvaluer").disabled = false;
     },
     evaluerMot: function (strMotAEvaluer) {
         strMotAEvaluer = strMotAEvaluer.toLowerCase();
@@ -104,18 +109,14 @@ let jeuxMots = {
                     tagSpan.className = "gris";
 
                 }
+                if (strMotAEvaluer === this.strMotHasard) {
 
-            }
-            // donner une rétroaction
-            if (strMotAEvaluer === this.strMotHasard) {
+                    document.getElementById("btnEvaluer").disabled = true;
+                }
+                if (this.intNombreEssai === 6) {
+                    document.getElementById("btnEvaluer").disabled = true;
 
-                console.log()
-                document.getElementById("btnEvaluer").disabled = true;
-                document.getElementById("btnReset").disabled = false;
-            }
-            if (this.intNombreEssai === 6) {
-                document.getElementById("btnEvaluer").disabled = true;
-                document.getElementById("btnReset").disabled = false;
+                }
             }
         }
     },
@@ -126,7 +127,7 @@ let jeuxMots = {
             arrSpan[intCpt].className = "";
         }
         this.intNombreEssai = 0;
-
+        document.getElementById("mot").value = "";
         jeuxMots.pigerMot()
     },
     changerDif: function () {
@@ -134,16 +135,12 @@ let jeuxMots = {
         let nouveauBoutonDifficulte = document.querySelector(`input[name="difficulte"][value="${difficulteMod}"]`);
 
         nouveauBoutonDifficulte.checked = true;
-
-        // Met à jour la difficulté dans la variable jeuxMots
-        jeuxMots.pigerMot();
         jeuxMots.updateSpanCount()
+        jeuxMots.reset()
     },
     updateSpanCount: function () {
         let difficulty = document.querySelector('input[name="difficulte"]:checked').value;
         let motList = document.querySelectorAll('.jeu__liste li');
-
-        // Déterminez le nombre de spans en fonction de la difficulté
         let spanCount;
         switch (difficulty) {
             case '1': // Facile
@@ -159,13 +156,10 @@ let jeuxMots = {
                 spanCount = 5; // Par défaut à facile si la difficulté est invalide
                 break;
         }
-
-        // Mettez à jour le nombre de spans dans chaque <p class="mot">
         motList.forEach(mot => {
             let pMot = mot.querySelector('.mot');
             pMot.innerHTML = ''; // Vide le contenu actuel du mot
 
-            // Ajoute le bon nombre de spans
             for (let i = 0; i < spanCount; i++) {
                 let span = document.createElement('span');
                 pMot.appendChild(span);
@@ -174,8 +168,6 @@ let jeuxMots = {
     },
 
 };
-// utiliser DOMContentLoaded plutôt que load
-// https://developer.mozilla.org/fr/docs/Web/API/Window/DOMContentLoaded_event
 window.addEventListener("DOMContentLoaded", function () {
 })
 document.getElementById("menuCommencer").addEventListener("click", function () {
@@ -202,7 +194,7 @@ document.getElementById("btnReset").addEventListener("click", function () {
 });
 let boutonsDiff = document.getElementsByName('difficulte');
 for (let i = 0; i < boutonsDiff.length; i++) {
-    boutonsDiff[i].addEventListener('change', function() {
+    boutonsDiff[i].addEventListener('change', function () {
         jeuxMots.updateSpanCount();
     });
 }
@@ -210,7 +202,7 @@ for (let i = 0; i < boutonsDiff.length; i++) {
 // Écoutez les changements dans les boutons de modification de difficulté pendant le jeu
 let boutonsDiffModal = document.getElementsByName('difficulteMod');
 for (let i = 0; i < boutonsDiffModal.length; i++) {
-    boutonsDiffModal[i].addEventListener('change', function() {
+    boutonsDiffModal[i].addEventListener('change', function () {
         jeuxMots.updateSpanCount();
         jeuxMots.changerDif();
     });
