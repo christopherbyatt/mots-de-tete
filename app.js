@@ -18,20 +18,20 @@ let body = document.querySelector("body");
 let modal = document.getElementById("modalRegles");
 let modalDiff = document.getElementById("modalDifficulte");
 
-btnRegles.onclick = function() {
+btnRegles.onclick = function () {
     modal.style.display = "block";
     body.style.overflow = "hidden"
 }
-btnRegles2.onclick = function() {
+btnRegles2.onclick = function () {
     modal.style.display = "block";
     body.style.overflow = "hidden"
 }
-btnDiff.onclick = function() {
+btnDiff.onclick = function () {
     modalDiff.style.display = "block"
     body.style.overflow = "hidden"
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target === modal) {
         modal.style.display = "none";
         body.style.overflow = "visible"
@@ -47,7 +47,8 @@ let jeuxMots = {
     getMotAleatoire: async function () {
         let difficulte = document.querySelector('input[name="difficulte"]:checked').value;
 
-        if(difficulte === "1") {
+
+        if (difficulte === "1") {
             try {
                 const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=5&maxlong=5&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
                 const data = await response.json();
@@ -56,7 +57,8 @@ let jeuxMots = {
             } catch (error) {
                 console.error("Erreur lors de la récupération du mot aléatoire :", error);
             }
-        } else if(difficulte === "2") {
+
+        } else if (difficulte === "2") {
 
             try {
                 const response = await fetch("https://api.dicolink.com/v1/mots/motauhasard?avecdef=true&minlong=7&maxlong=7&verbeconjugue=false&api_key=vIZN5M213LnPy5M8isceExH5sYNBg35h");
@@ -126,14 +128,65 @@ let jeuxMots = {
         this.intNombreEssai = 0;
 
         jeuxMots.pigerMot()
-    }
+    },
+    changerDif: function () {
+        let difficulteMod = document.querySelector('input[name="difficulteMod"]:checked').value;
+        let nouveauBoutonDifficulte = document.querySelector(`input[name="difficulte"][value="${difficulteMod}"]`);
+
+        nouveauBoutonDifficulte.checked = true;
+
+        // Met à jour la difficulté dans la variable jeuxMots
+        jeuxMots.pigerMot();
+        jeuxMots.updateSpanCount()
+    },
+    updateSpanCount: function () {
+        let difficulty = document.querySelector('input[name="difficulte"]:checked').value;
+        let motList = document.querySelectorAll('.jeu__liste li');
+
+        // Déterminez le nombre de spans en fonction de la difficulté
+        let spanCount;
+        switch (difficulty) {
+            case '1': // Facile
+                spanCount = 5;
+                break;
+            case '2': // Intermédiaire
+                spanCount = 7;
+                break;
+            case '3': // Difficile
+                spanCount = 8;
+                break;
+            default:
+                spanCount = 5; // Par défaut à facile si la difficulté est invalide
+                break;
+        }
+
+        // Mettez à jour le nombre de spans dans chaque <p class="mot">
+        motList.forEach(mot => {
+            let pMot = mot.querySelector('.mot');
+            pMot.innerHTML = ''; // Vide le contenu actuel du mot
+
+            // Ajoute le bon nombre de spans
+            for (let i = 0; i < spanCount; i++) {
+                let span = document.createElement('span');
+                pMot.appendChild(span);
+            }
+        });
+    },
 
 };
 // utiliser DOMContentLoaded plutôt que load
 // https://developer.mozilla.org/fr/docs/Web/API/Window/DOMContentLoaded_event
 window.addEventListener("DOMContentLoaded", function () {
 })
-document.getElementById("menuCommencer").addEventListener("click", function() {
+document.getElementById("menuCommencer").addEventListener("click", function () {
+    let boutonMenu = document.getElementsByName('difficulte');
+    let boutonMod = document.getElementsByName('difficulteMod')
+
+    for (let i = 0; i < boutonMenu.length; i++) {
+        if (boutonMenu[i].checked) {
+            boutonMod[i].checked = true
+        }
+    }
     // Cache le div "menu"
     document.querySelector('.menu').style.display = "none";
     // Affiche le div "jeu"
@@ -143,14 +196,24 @@ document.getElementById("menuCommencer").addEventListener("click", function() {
 document.getElementById("btnEvaluer").addEventListener("click", function () {
     let strMot = document.getElementById("mot").value;
     jeuxMots.evaluerMot(strMot);
-})
+});
 document.getElementById("btnReset").addEventListener("click", function () {
     jeuxMots.reset();
-})
-// choix de remplacer <form> par div.form plutôt que:
-/* document.getElementById("champMot").addEventListener("keyup", function(objEvenement){
-    if(objEvenement.key == "Enter"){
-        objEvenement.preventDefault();
-    }
-}) */
- 
+});
+let boutonsDiff = document.getElementsByName('difficulte');
+for (let i = 0; i < boutonsDiff.length; i++) {
+    boutonsDiff[i].addEventListener('change', function() {
+        jeuxMots.updateSpanCount();
+    });
+}
+
+// Écoutez les changements dans les boutons de modification de difficulté pendant le jeu
+let boutonsDiffModal = document.getElementsByName('difficulteMod');
+for (let i = 0; i < boutonsDiffModal.length; i++) {
+    boutonsDiffModal[i].addEventListener('change', function() {
+        jeuxMots.updateSpanCount();
+        jeuxMots.changerDif();
+    });
+}
+jeuxMots.updateSpanCount();
+
