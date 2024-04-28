@@ -41,15 +41,19 @@
                 </li>
                 <li class="regle__contenu">
                     <span class="regle__numero">2</span>
-                    <p class="regle__texte">Chaques couleurs de case ont une signification : <br> <span class="vert">Vert</span> : la lettre est au bon endroit <br> <span class="jaune">Jaune</span> : La lettre n'est pas au bon endroit <br> <span class="gris">Gris</span> : la lettre n'est pas dans le mot</p>
+                    <p class="regle__texte">Chaques couleurs de case ont une signification : <br> <span class="vert">Vert</span>
+                        : la lettre est au bon endroit <br> <span class="jaune">Jaune</span> : La lettre n'est pas au
+                        bon endroit <br> <span class="gris">Gris</span> : la lettre n'est pas dans le mot</p>
                 </li>
                 <li class="regle__contenu">
                     <span class="regle__numero">3</span>
-                    <p class="regle__texte">Vous pouvez, en tout temps, réinitiliser en cliquant sur le bouton R ou en choisissant une nouvelle difficultée</p>
+                    <p class="regle__texte">Vous pouvez, en tout temps, réinitiliser en cliquant sur le bouton R ou en
+                        choisissant une nouvelle difficultée</p>
                 </li>
                 <li class="regle__contenu">
                     <span class="regle__numero">4</span>
-                    <p class="regle__texte">Les difficultés sont : <br> Facile : 5 lettres <br> Intermédiaire : 7 lettres <br> Difficile : 8 lettres </p>
+                    <p class="regle__texte">Les difficultés sont : <br> Facile : 5 lettres <br> Intermédiaire : 7
+                        lettres <br> Difficile : 8 lettres </p>
                 </li>
             </ol>
         </div>
@@ -64,7 +68,7 @@
             </div>
             <div class="interface__mot">
                 <button type="button" id="btnReset"><i class="fa-solid fa-rotate-right"></i></button>
-                <input type="text" id="mot" name="mot" maxlength="5" placeholder="Écrire le mot ici">
+                <input type="text" id="mot" name="mot" maxlength="8" placeholder="Écrire le mot ici">
                 <label for="mot"></label>
                 <button type="button" id="btnEvaluer">Essayer -></button>
             </div>
@@ -73,11 +77,12 @@
                 <button type="button" id="btnDifficulte">Difficultés</button>
             </div>
         </div>
-        <div role="dialog" aria-modal="true" aria-label="Choix de la difficulté" id="modalDifficulte" class="modalDifficulte">
+        <div role="dialog" aria-modal="true" aria-label="Choix de la difficulté" id="modalDifficulte"
+             class="modalDifficulte">
             <div class="modal-content">
                 <h3 class="h3Mod">Choisir une nouvelle difficulté</h3>
                 <div class="menu__difficulte">
-                    <input type="radio" id="facileMod"  name="difficulteMod" value="1">
+                    <input type="radio" id="facileMod" name="difficulteMod" value="1">
                     <label for="facileMod" class="interface__label">Facile</label>
                     <input type="radio" id="intermediaireMod" name="difficulteMod" value="2">
                     <label for="intermediaireMod" class="interface__label">Intermédiaire</label>
@@ -91,17 +96,17 @@
             <div class="jeu__essais">
                 <h3>Vos essais</h3>
                 <ol class="jeu__liste">
-                    <li id="mot1"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    <li id="mot1"><p class="mot"></p>
                     </li>
-                    <li id="mot2"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    <li id="mot2"><p class="mot"></p>
                     </li>
-                    <li id="mot3"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    <li id="mot3"><p class="mot"></p>
                     </li>
-                    <li id="mot4"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    <li id="mot4"><p class="mot"></p>
                     </li>
-                    <li id="mot5"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    <li id="mot5"><p class="mot"></p>
                     </li>
-                    <li id="mot6"><p class="mot"><span></span><span></span><span></span><span></span><span></span></p>
+                    <li id="mot6"><p class="mot"></p>
                     </li>
                 </ol>
             </div>
