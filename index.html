@@ -59,24 +59,6 @@
         </div>
     </div>
     <div class="motsDeTete">
-        <h1>Mots de tête&#8239;!</h1>
-        <h2 class="sous-titre">Mini-jeu</h2>
-        <div class="interface">
-            <div class="interface__essaisRestants">
-                <h3>Essais restants : <span> </span>
-                </h3>
-            </div>
-            <div class="interface__mot">
-                <button type="button" id="btnReset"><i class="fa-solid fa-rotate-right"></i></button>
-                <input type="text" id="mot" name="mot" maxlength="8" placeholder="Écrire le mot ici">
-                <label for="mot"></label>
-                <button type="button" id="btnEvaluer">Essayer -></button>
-            </div>
-            <div class="interface__options">
-                <button type="button" id="btnRegle">Règles du jeu</button>
-                <button type="button" id="btnDifficulte">Difficultés</button>
-            </div>
-        </div>
         <div role="dialog" aria-modal="true" aria-label="Choix de la difficulté" id="modalDifficulte"
              class="modalDifficulte">
             <div class="modal-content">
@@ -92,9 +74,7 @@
             </div>
         </div>
         <div class="jeu">
-
             <div class="jeu__essais">
-                <h3>Vos essais</h3>
                 <ol class="jeu__liste">
                     <li id="mot1"><p class="mot"></p>
                     </li>
@@ -109,6 +89,18 @@
                     <li id="mot6"><p class="mot"></p>
                     </li>
                 </ol>
+            </div>
+        </div>
+        <div class="interface">
+            <div class="interface__options">
+                <button type="button" id="btnRegle">Règles du jeu</button>
+                <button type="button" id="btnDifficulte">Difficultés</button>
+            </div>
+            <div class="interface__mot">
+                <button type="button" id="btnReset"><i class="fa-solid fa-rotate-right"></i></button>
+                <input type="text" id="mot" name="mot" maxlength="8" placeholder="Écrire le mot ici">
+                <label for="mot"></label>
+                <button type="button" id="btnEvaluer">Essayer -></button>
             </div>
         </div>
     </div>
