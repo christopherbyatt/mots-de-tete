@@ -13,6 +13,7 @@ let btnRegles = document.getElementById("menuRegle");
 let btnRegles2 = document.getElementById("btnRegle");
 let btnDiff = document.getElementById("btnDifficulte");
 let body = document.querySelector("body");
+let bonMot = document.getElementById("bonMot");
 
 // Récupérer la modale
 let modal = document.getElementById("modalRegles");
@@ -40,6 +41,11 @@ window.onclick = function (event) {
         modalDiff.style.display = "none";
         body.style.overflow = "visible"
     }
+}
+function afficherModaleReussis() {
+    let modaleReussis = document.getElementById("modaleReussis");
+    modaleReussis.style.display = "block";
+    body.style.overflow = "hidden"
 }
 function retraitAccents(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -87,6 +93,7 @@ let jeuxMots = {
         await this.getMotAleatoire();
         document.getElementById("btnEvaluer").disabled = false;
     },
+
     evaluerMot: function (strMotAEvaluer) {
         strMotAEvaluer = strMotAEvaluer.toLowerCase();
         document.getElementById("mot").value = ""
@@ -110,11 +117,12 @@ let jeuxMots = {
 
                 }
                 if (strMotAEvaluer === this.strMotHasard) {
-
                     document.getElementById("btnEvaluer").disabled = true;
+                    afficherModaleReussis();
                 }
                 if (this.intNombreEssai === 6) {
                     document.getElementById("btnEvaluer").disabled = true;
+                    // bonMot.innerHTML = strMotAEvaluer;
 
                 }
             }
@@ -137,6 +145,14 @@ let jeuxMots = {
         nouveauBoutonDifficulte.checked = true;
         jeuxMots.updateSpanCount()
         jeuxMots.reset()
+    },
+    changerDifReussis: function () {
+        let difficulteModReussis = document.querySelector('input[name="difficulteReussis"]:checked').value;
+        let nouveauBoutonDifficulteReussis = document.querySelector(`input[name="difficulte"][value="${difficulteModReussis}"]`);
+
+        nouveauBoutonDifficulteReussis.checked = true;
+        jeuxMots.updateSpanCount();
+        jeuxMots.reset();
     },
     updateSpanCount: function () {
         let difficulty = document.querySelector('input[name="difficulte"]:checked').value;
@@ -172,7 +188,7 @@ window.addEventListener("DOMContentLoaded", function () {
 })
 document.getElementById("menuCommencer").addEventListener("click", function () {
     let boutonMenu = document.getElementsByName('difficulte');
-    let boutonMod = document.getElementsByName('difficulteMod')
+    let boutonMod = document.getElementsByName('difficulteMod');
 
     for (let i = 0; i < boutonMenu.length; i++) {
         if (boutonMenu[i].checked) {
@@ -205,6 +221,15 @@ for (let i = 0; i < boutonsDiffModal.length; i++) {
     boutonsDiffModal[i].addEventListener('change', function () {
         jeuxMots.updateSpanCount();
         jeuxMots.changerDif();
+        // jeuxMots.changerDifReussis();
+    });
+}
+let boutonDiffReussis = document.getElementsByName("difficulteReussis");
+for (let i = 0; i < boutonDiffReussis.length; i++) {
+    boutonDiffReussis[i].addEventListener('change', function () {
+        jeuxMots.updateSpanCount();
+        // jeuxMots.changerDif();
+        jeuxMots.changerDifReussis()
     });
 }
 jeuxMots.updateSpanCount();

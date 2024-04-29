@@ -213,6 +213,7 @@ h3 {
 .jeu {
   &__essais {
     width: 695px;
+    padding-top: 5rem;
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -238,14 +239,14 @@ h3 {
 
 .mot span {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
   text-align: center;
-  line-height: 80px;
+  line-height: 50px;
   color: white;
   background-color: rgb(77, 60, 49, 0.3);
-  font-size: 28px;
+  font-size: 24px;
   margin: 0.2rem;
   text-transform: uppercase;
 }
@@ -275,6 +276,39 @@ h3 {
   overflow: hidden;
   background-color: rgba(0,0,0,0.4);
 }
+.modal-reussis {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.4);
+  &__content {
+    background-color: #FFEBDC;
+    margin: 15% auto;
+    padding: 20px;
+    border: 3px solid #9D4B1E;
+    border-radius: 10px;
+    width: 30%;
+  }
+  &__stats {
+    background-color: #FFDAC2;
+    margin: 15% auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+h4 {
+  margin: 0;
+  text-align: center;
+}
 .modalDifficulte {
   display: none;
   position: fixed;
@@ -287,7 +321,6 @@ h3 {
   background-color: rgba(0,0,0,0.4);
 }
 
-/* Contenu de la modale */
 .modal-content {
   background-color: #FFDAC3;
   margin: 15% auto;

@@ -59,10 +59,10 @@
         </div>
     </div>
     <div class="motsDeTete">
-        <div role="dialog" aria-modal="true" aria-label="Choix de la difficulté" id="modalDifficulte"
+        <div role="dialog" aria-modal="true" aria-labelledby="h3Modal" id="modalDifficulte"
              class="modalDifficulte">
             <div class="modal-content">
-                <h3 class="h3Mod">Choisir une nouvelle difficulté</h3>
+                <h3 id="h3Modal" class="h3Mod">Choisir une nouvelle difficulté</h3>
                 <div class="menu__difficulte">
                     <input type="radio" id="facileMod" name="difficulteMod" value="1">
                     <label for="facileMod" class="interface__label">Facile</label>
@@ -101,6 +101,25 @@
                 <input type="text" id="mot" name="mot" maxlength="8" placeholder="Écrire le mot ici">
                 <label for="mot"></label>
                 <button type="button" id="btnEvaluer">Essayer -></button>
+            </div>
+        </div>
+        <div role="dialog" aria-modal="true" aria-labelledby="h3Reussis" id="modaleReussis" class="modal-reussis">
+            <div class="modal-reussis__content">
+                <h3 id="h3Reussis" class="h3Mod">Bravo, Vous avez trouvé le mot!!</h3>
+                <div class="modal-reussis__stats">
+                    <h4>Statistique</h4>
+                    <p>Nombre d'essaies : <span id="essaies">0</span></p>
+                    <p>Mots trouvés : <span id="trouvés">0</span></p>
+                </div>
+                <h4>Changer la difficulté ?</h4>
+                <div class="menu__difficulte">
+                    <input type="radio" id="facileReussis" name="difficulteReussis" value="1">
+                    <label for="facileReussis" class="interface__label">Facile</label>
+                    <input type="radio" id="intermediaireReussis" name="difficulteReussis" value="2">
+                    <label for="intermediaireReussis" class="interface__label">Intermédiaire</label>
+                    <input type="radio" id="difficileReussis" name="difficulteReussis" value="3">
+                    <label for="difficileReussis" class="interface__label">Difficile</label>
+                </div>
             </div>
         </div>
     </div>
