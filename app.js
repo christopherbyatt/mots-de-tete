@@ -231,6 +231,7 @@ let jeuxMots = {
         let difficulteSpan = document.getElementById("difficulte");
         let difficulteLabel = document.querySelector(`input[name="difficulteMod"]:checked + label`);
         difficulteSpan.innerText = difficulteLabel.innerText;
+        document.getElementById("choixReussis").innerText = ""
     },
     changerDifReussis: function () {
         let difficulteModReussis = document.querySelector('input[name="difficulteReussis"]:checked').value;
@@ -244,6 +245,7 @@ let jeuxMots = {
         let difficulteSpan = document.getElementById("difficulte");
         let difficulteLabel = document.querySelector(`input[name="difficulteMod"]:checked + label`);
         difficulteSpan.innerText = difficulteLabel.innerText;
+        document.getElementById("choixReussis").innerText = ""
     },
     changerDifEchec: function () {
         let difficulteModEchec = document.querySelector('input[name="difficulteEchec"]:checked').value;
@@ -257,6 +259,7 @@ let jeuxMots = {
         let difficulteSpan = document.getElementById("difficulte");
         let difficulteLabel = document.querySelector(`input[name="difficulteMod"]:checked + label`);
         difficulteSpan.innerText = difficulteLabel.innerText;
+        document.getElementById("choixEchec").innerText = ""
 
     },
     updateSpanCount: function () {
@@ -338,7 +341,7 @@ for (let i = 0; i < boutonDiffReussis.length; i++) {
         mettreAJourLongueurMot(difficulte);
         jeuxMots.updateSpanCount();
         jeuxMots.changerDifReussis()
-
+        document.getElementById("choixReussis").innerText = ""
     });
 }
 let boutonDiffEchec = document.getElementsByName("difficulteEchec");
@@ -348,6 +351,7 @@ for (let i = 0; i < boutonDiffEchec.length; i++) {
         mettreAJourLongueurMot(difficulte);
         jeuxMots.updateSpanCount();
         jeuxMots.changerDifEchec();
+        document.getElementById("choixEchec").innerText = ""
     })
 }
 document.getElementById("btnDiffReussis").addEventListener("click", function () {
