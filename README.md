@@ -1,7 +1,7 @@
 # Mots de tête!  
 (librement inspiré de Wordle bien que n'y ayant jamais joué)
+[Le jeu mot de tête est disponible ici!](https://christopherbyatt.github.io/mots-de-tete/)
 
-[Mots de tête sur Github Pages](https://evefevrier.github.io/wordle/)
 
 Code de triche : ouvrir la console...
 
